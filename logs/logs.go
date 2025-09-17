@@ -121,7 +121,7 @@ func validateLine(record models.Record, formData models.FormData, kw string) boo
 	}
 
 	if formData.User != "" {
-		if strings.EqualFold(formData.User, record.User) {
+		if !strings.EqualFold(formData.User, record.User) {
 			return false
 		}
 	}
