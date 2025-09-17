@@ -1,0 +1,88 @@
+/* Page layout */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #0f1115;      /* dark background */
+  color: #e5e7eb;           /* light text */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top search bar */
+.searchbar {
+  padding: 16px 20px;
+  background: #12151b;      /* slightly lighter than body */
+  border-bottom: 1px solid #1f2430;
+}
+
+.searchbar form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.searchbar input[type="text"] {
+  background: #1a1f2a;
+  color: #e5e7eb;
+  border: 1px solid #2a3140;
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.searchbar input::placeholder {
+  color: #9aa3b2;
+}
+
+.searchbar button {
+  background: #2563eb;      /* blue accent */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 0.05s ease, opacity 0.2s ease;
+}
+.searchbar button:hover { opacity: 0.9; }
+.searchbar button:active { transform: translateY(1px); }
+
+/* Results area fills all remaining space */
+.results {
+  flex: 1;                  /* take all leftover height */
+  padding: 16px 20px;
+  display: flex;
+}
+
+/* The scrollable results box */
+#resultsBox {
+  background: #11161e;
+  border: 1px solid #212836;
+  border-radius: 10px;
+  padding: 10px 12px;
+
+  /* Fill the .results area */
+  width: 100%;
+  height: 100%;
+
+  /* Scrolling behavior */
+  overflow-y: auto;         /* vertical scroll */
+  overflow-x: auto;         /* horizontal scroll */
+  white-space: pre;         /* NO soft wrap; preserve newlines only */
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  line-height: 1.35;
+  color: #d1d5db;
+}
+
+/* Optional: nice thin scrollbars (Chromium/Edge/Firefox) */
+#resultsBox::-webkit-scrollbar { height: 10px; width: 10px; }
+#resultsBox::-webkit-scrollbar-thumb { background: #2a3140; border-radius: 8px; }
+#resultsBox::-webkit-scrollbar-track { background: #12151b; }
+
+@supports (scrollbar-color: auto) {
+  #resultsBox { scrollbar-color: #2a3140 #12151b; scrollbar-width: thin; }
+}
